@@ -1,0 +1,135 @@
+﻿/************ Table ************/
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+    table thead th {
+        border: 1px solid #DDD;
+        text-align: left;
+        text-indent: 20px;
+        padding: 10px 8px;
+        font-size: 14px;
+        color: #707070;
+        font-weight: 700;
+        background: #ddd;
+        background-image: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ddd));
+        background-image: -webkit-linear-gradient(top, #fff, #ddd);
+        background-image: -moz-linear-gradient(top, #fff, #ddd);
+        background-image: -ms-linear-gradient(top, #fff, #ddd);
+        background-image: -o-linear-gradient(top, #fff, #ddd);
+        background-image: linear-gradient(to bottom, #fff, #ddd);
+        color: #444;
+        text-shadow: 0 1px 0 rgba(255,255,255,.8);
+        -webkit-border-radius: 5px 0 0 0;
+        -moz-border-radius: 5px 0 0 0;
+        border-radius: 5px 0 0 0;
+        -moz-box-shadow: 0 2px 2px rgba(0,0,0,.4);
+        -webkit-box-shadow: 0 2px 2px rgba(0,0,0,.4);
+        box-shadow: 0 2px 2px rgba(0,0,0,.4);
+    }
+
+tbody {
+    border-bottom: 1px solid #ddd;
+}
+
+    tbody tr {
+        background: #fff;
+        border-bottom: 1PX solid #EEE;
+    }
+
+        tbody tr.alt-row {
+            background: #f3f3f3;
+        }
+
+table td,
+table th {
+    padding: 10px;
+    line-height: 1.3em;
+    text-align: left;
+}
+
+table tfoot td .bulk-actions {
+    padding: 15px 0 5px 0;
+}
+
+    table tfoot td .bulk-actions select {
+        padding: 4px;
+        border: 1px solid #ccc;
+    }
+
+
+
+/*************** Content Box ***************/
+
+.content-box {
+    border: 1px solid #ccc;
+    margin: 0 0 20px 0;
+    background: #fff;
+}
+
+.content-box-header {
+    background: #e5e5e5 url('/content/images/bg-content-box.gif') top left repeat-x;
+    margin-top: 1px;
+    height: 40px;
+    cursor: pointer;
+    padding-left: 10px;
+}
+
+    .content-box-header img {
+        float: left;
+        margin: 4px 10px 4px 4px;
+    }
+
+    .content-box-header h3 {
+        line-height: 40px;
+        float: left;
+    }
+
+ul.content-box-tabs {
+    float: right;
+    padding: 11px 0px 0 0 !important;
+    margin: 0 !important;
+}
+
+    ul.content-box-tabs li {
+        float: left;
+        margin: 0;
+        padding: 2px 8px 2px 8px !important;
+        background-image: none !important;
+    }
+
+        ul.content-box-tabs li a {
+            color: gray;
+            text-decoration: none;
+            display: block;
+            margin: 1px;
+            border-bottom: 0px;
+            overflow: hidden;
+            margin-top: 4px;
+            font-size: 13px;
+            padding: 2px 10px 2px 10px !important;
+        }
+
+            ul.content-box-tabs li a:hover {
+                color: Black;
+                font-weight: bold;
+            }
+
+            ul.content-box-tabs li a.current {
+                color: Black;
+                font-weight: bold;
+                background: #fff;
+                border-top: 1px solid #ccc;
+                border-left: 1px solid #ccc;
+                border-right: 1px solid #ccc;
+                border-bottom: 0px;
+                border-bottom: 0;
+                padding: 2px 10px 2px 10px !important;
+            }
+
+.content-box-content {
+    padding: 20px;
+    font-size: 13px;
+    border-top: 1px solid #ccc;
+}

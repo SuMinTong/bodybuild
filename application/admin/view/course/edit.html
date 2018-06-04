@@ -1,0 +1,248 @@
+{extend name="base" /}
+
+{block name="main"}
+<div class="box_form">
+
+    <div class="box_content">
+        <form class="layui-form" id="admin">
+            <input type="hidden" name="id" value="{$user_info.id}" />
+            <div class="layui-form-item">
+                <label class="layui-form-label">门店</label>
+                <div class="layui-input-inline">
+                    <input name="store_id" lay-verify="required" placeholder="请输入门店名称" autocomplete="off" class="layui-input" type="text" {notempty name="$user_info.store_id"}value="{$user_info.store_id}"{/notempty}>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">上课老师</label>
+                <div class="layui-input-inline">
+                    <input name="teacher_id" lay-verify="required" placeholder="请输入支持的物品" autocomplete="off" class="layui-input" type="text" {notempty name="$user_info.teacher_id"}value="{$user_info.teacher_id}"{/notempty}>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">课堂人数</label>
+                <div class="layui-input-inline">
+                    <input name="class_number" lay-verify="required" placeholder="请再次输入不支持物品" autocomplete="off" class="layui-input" type="text" {notempty name="$user_info.class_number"}value="{$user_info.class_number}"{/notempty}>
+                </div>
+            </div>
+
+            
+            <div class="layui-form-item">
+                <label class="layui-form-label">可取消时间</label>
+                <div class="layui-input-inline">
+                    <input name="appoinTime" lay-verify="required" placeholder="请再次可取消时间" autocomplete="off" class="layui-input" type="text" {notempty name="$user_info.appoinTime"}value="{$user_info.appoinTime}"{/notempty}>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">课堂名称</label>
+                <div class="layui-input-inline">
+                    <input name="course_name" lay-verify="required" placeholder="请再次输入地址" autocomplete="off" class="layui-input" type="text" {notempty name="$user_info.course_name"}value="{$user_info.course_name}"{/notempty}>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">课堂描述</label>
+                <div class="layui-input-inline">
+                    <input name="course_describe" lay-verify="required" placeholder="请再次输入地铁" autocomplete="off" class="layui-input" type="text" {notempty name="$user_info.course_describe"}value="{$user_info.course_describe}"{/notempty}>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">开始时间</label>
+                <div class="layui-input-inline">
+                    <input name="start_time" lay-verify="required" placeholder="请输入地铁详情" autocomplete="off" class="layui-input" type="text" {notempty name="$user_info.start_time"}value="{$user_info.start_time}"{/notempty}>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">结束时间</label>
+                <div class="layui-input-inline">
+                    <input name="over_time" lay-verify="required" placeholder="请输入地铁距离" autocomplete="off" class="layui-input" type="text" {notempty name="$user_info.over_time"}value="{$user_info.over_time}"{/notempty}>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">注意事项</label>
+                <div class="layui-input-inline">
+                    <input name="notice_matter" lay-verify="required" placeholder="请输入公交站" autocomplete="off" class="layui-input" type="text" {notempty name="$user_info.notice_matter"}value="{$user_info.notice_matter}"{/notempty}>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">自带物品</label>
+                <div class="layui-input-inline">
+                    <input name="luggage" lay-verify="required" placeholder="请输入公交详情" autocomplete="off" class="layui-input" type="text" {notempty name="$user_info.luggage"}value="{$user_info.luggage}"{/notempty}>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">课时费用</label>
+                <div class="layui-input-inline">
+                    <input name="class_fee" lay-verify="required" placeholder="课时费用" autocomplete="off" class="layui-input" type="text" {notempty name="$user_info.class_fee"}value="{$user_info.class_fee}"{/notempty}>
+                </div>
+            </div>
+
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">课程所在日期</label>
+                <div class="layui-input-inline">
+                    <input name="on_date" lay-verify="required" placeholder="课程所在日期" autocomplete="off" class="layui-input" type="text" {notempty name="$user_info.on_date"}value="{$user_info.on_date}"{/notempty}>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">课时所在星期</label>
+                <div class="layui-input-inline">
+                    <input name="on_week" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" type="text" {notempty name="$user_info.on_week"}value="{$user_info.on_week}"{/notempty}>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">分界时刻</label>
+                <div class="layui-input-inline">
+                    <input name="boundary_moment" lay-verify="required" placeholder="请输入经度" autocomplete="off" class="layui-input" type="text" {notempty name="$user_info.boundary_moment"}value="{$user_info.boundary_moment}"{/notempty}>
+                </div>
+            </div>
+
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">卡路里</label>
+                <div class="layui-input-inline">
+                    <input name="calorie" lay-verify="required" placeholder="卡路里" autocomplete="off" class="layui-input" type="text" {notempty name="$user_info.calorie"}value="{$user_info.calorie}"{/notempty}>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">肌肉力量</label>
+                <div class="layui-input-inline">
+                    <input name="muscular_strength" lay-verify="required" placeholder="肌肉力量" autocomplete="off" class="layui-input" type="text" {notempty name="$user_info.muscular_strength"}value="{$user_info.muscular_strength}"{/notempty}>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">肌肉耐力</label>
+                <div class="layui-input-inline">
+                    <input name="muscular_endurance" lay-verify="required" placeholder="肌肉耐力" autocomplete="off" class="layui-input" type="text" {notempty name="$user_info.muscular_endurance"}value="{$user_info.muscular_endurance}"{/notempty}>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">协调性</label>
+                <div class="layui-input-inline">
+                    <input name="harmony" lay-verify="required" placeholder="协调性" autocomplete="off" class="layui-input" type="text" {notempty name="$user_info.harmony"}value="{$user_info.harmony}"{/notempty}>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">心肺功能</label>
+                <div class="layui-input-inline">
+                    <input name="cardiopulmonary" lay-verify="required" placeholder="心肺功能" autocomplete="off" class="layui-input" type="text" {notempty name="$user_info.cardiopulmonary"}value="{$user_info.cardiopulmonary}"{/notempty}>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">柔韧性</label>
+                <div class="layui-input-inline">
+                    <input name="suppleness" lay-verify="required" placeholder="柔韧性" autocomplete="off" class="layui-input" type="text" {notempty name="$user_info.suppleness"}value="{$user_info.suppleness}"{/notempty}>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">难以程度</label>
+                <div class="layui-input-inline">
+                    <input name="degree" lay-verify="required" placeholder="难以程度" autocomplete="off" class="layui-input" type="text" {notempty name="$user_info.degree"}value="{$user_info.degree}"{/notempty}>
+                </div>
+            </div>
+
+            <div class="layui-upload" id="upload-thumb">
+                <label class="layui-form-label">头像</label>
+                <button type="button" class="layui-btn and-bg-{$skin_name|default='default'}" id="thumb">上传头像</button>
+                <div class="layui-upload-list">
+                    <label class="layui-form-label"></label>
+                    <img class="layui-upload-img" id="demo1" width="150" height="150">
+                    <p id="demoText"></p>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn and-bg-{$skin_name|default='default'}" lay-submit lay-filter="admin">立即提交</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                </div>
+            </div>
+
+
+
+        </form>
+
+    </div>
+</div>
+{/block}
+
+{block name="script"}
+<script>
+    layui.use('upload', function(){
+        var upload = layui.upload;
+        //执行实例
+        var uploadInst = upload.render({
+            elem: '#thumb' //绑定元素
+            ,url: "{:url('admin/Upload/upload')}"
+
+            //上传接口
+            ,done: function(res){
+            	console.log(res);
+                //上传完毕回调
+                if(res.code == 200) {
+                    $('#demo1').attr('src',res.path);
+                    $('#upload-thumb').append('<input type="hidden" name="thumb" value="'+ res.path +'">');
+                } else {
+                    layer.msg(res.msg);
+                }
+            }
+            ,error: function(){
+                //请求异常回调
+                //演示失败状态，并实现重传
+                var demoText = $('#demoText');
+                demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-mini demo-reload">重试</a>');
+                demoText.find('.demo-reload').on('click', function(){
+                    uploadInst.upload();
+                });
+            }
+        });
+    });
+</script>
+<script>
+    layui.use(['layer', 'form'], function() {
+        var layer = layui.layer,
+                $ = layui.jquery,
+                form = layui.form;
+        form.verify({
+            pass: [
+                /^[\S]{6,12}$/
+                ,'密码必须6到12位，且不能出现空格'
+            ]
+        });
+        $(window).on('load', function() {
+            form.on('submit(admin)', function(data) {
+                $.ajax({
+                    url:"{:url('admin/course/edit_course')}",
+                    data:$('#admin').serialize(),
+                    type:'post',
+                    async: false,
+                    dataType: 'json',
+                    success:function(res) {
+                    	console.log(res)
+                        if(res.code == 200) {
+                            layer.alert(res.msg, function(index){
+//                              location.href = res.url;
+location.href = "{:url('admin/course/courseList')}";
+                            })
+                        } else {
+                            layer.msg(res.msg);
+                        }
+                    }
+                });
+                return false;
+            });
+        });
+    });
+</script>
+{/block}

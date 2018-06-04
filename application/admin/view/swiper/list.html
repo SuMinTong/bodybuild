@@ -1,0 +1,90 @@
+{extend name="base" /}
+{block name="header"}
+<div class="admin_header_{$skin_name|default='default'} clearfix">
+	<div class="title"><i></i>{$title|default=""}</div>
+	<div class="action">
+		<b></b>
+		<div class="layui-btn-group layui-btn-group-only">
+			<a class="layui-btn  layui-btn-disabled layui-btn-sm "><i class="fa fa-reply"></i> 返 回 </a>
+		</div>
+	</div>
+</div>
+{/block}
+{block name="main"}
+
+<form class="layui-form" id="admin">
+	<table class="layui-table" lay-even="" lay-skin="row" lay-size="sm">
+		<colgroup>
+			<col width="50">
+			<col width="50">
+			<col width="800">
+
+
+		</colgroup>
+		<thead>
+			<tr>
+				<th>选择</th>
+				<th>ID</th>
+				<td>详情</td>
+				<th>操作</th>
+
+			</tr>
+		</thead>
+		<tbody>
+
+			{volist name="$swiper_list" id="vo"}
+			<tr>
+				<td><input type="checkbox" name="user_id[]" class="checkbox" value="{$vo.id}"></td>
+				<td>{$vo.id}</td>
+				<td>
+					{foreach name="$vo.path" as item="vos"}　
+						<img src="{$vos}">　
+					{/foreach}
+				</td>
+				 <td><input type="checkbox"  name="status[]" lay-skin="switch" lay-text="禁用|启用" lay-filter="switchStatus" value="{$vo.id}" {notempty name="$vo.status"}{eq name="$vo.status" value="1"}checked=""{/eq}{/notempty}></td>
+				
+
+			</tr>
+			{/volist}
+		</tbody>
+	</table>
+</form>
+{/block}
+
+{block name="script"}
+
+<script type="text/javascript">
+	layui.use(['layer', 'form'], function() {
+		var layer = layui.layer,
+		$ = layui.jquery,
+		form = layui.form;
+
+		var status=0;
+		form.on('switch(switchStatus)', function(data){
+			loading = layer.load(2, {
+				shade: [0.2,'#000']
+			});
+			if(data.elem.checked){
+				status=1;
+			}else{
+				status=0;
+			}
+			var url="{:url('admin/swiper/update_status')}?id="+data.value+'&status='+status ;
+
+			$.get(url,function(data){
+
+				if(data.code == 200){
+					layer.close(loading);
+					layer.msg(data.msg, {icon: 1, time: 1000}, function(){
+            //  location.reload();
+        });
+				}else{
+					layer.close(loading);
+					layer.msg(data.msg, {icon: 2, anim: 6, time: 1000});
+				}
+			});
+			return false;
+		});
+	});
+</script>
+{/block}

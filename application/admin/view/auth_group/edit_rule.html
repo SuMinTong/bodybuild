@@ -107,6 +107,7 @@
                 data:$('#admin').serialize(),
                 type:'post',
                 async: false,
+                dataType: 'json',
                 success:function(res) {
                     if(res.code == 1) {
                         layer.alert(res.msg, function(index){

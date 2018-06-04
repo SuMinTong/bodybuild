@@ -1,0 +1,75 @@
+#dvpagerecordplugs {
+    padding: 2px 2px;
+    float: right;
+    font-size: 12px;
+    overflow: hidden;
+}
+
+#dvpagerecordcontent {
+    white-space: nowrap;
+    overflow: hidden;
+    float: left;
+}
+
+#dvpagerecordfirst, #dvpagerecordlast {
+    width: auto;
+    float: left;
+}
+
+    #dvpagerecordfirst ul, #dvpagerecordlast ul, .ulpagerecordcontent {
+        padding: 0px;
+        margin: 0px;
+    }
+
+#lipagerecordfirst, #dvpagerecordprev, #dvpagerecordnext, #lipagerecordlast {
+    padding: 6px 12px;
+    color: blue;
+    float: left;
+    border: 1px solid #D9D9D9;
+    cursor: pointer;
+}
+
+.ulpagerecordcontent li {
+    padding: 6px 12px;
+    color: blue;
+    float: left;
+    border: 1px solid #D9D9D9;
+    cursor: pointer;
+}
+
+#dvpagerecordNumGo {
+    overflow: hidden;
+    float: left;
+}
+
+#pageRecordtxtNumGo {
+    width: 30px;
+    padding: 6px;
+    color: #04c;
+    float: left;
+    border: 1px solid #37f;
+    text-align:center;
+    margin-left: 1px;
+    height:19px;
+}
+
+#pageRecordBtnNumGo {
+    margin-left: 2px;
+    height: 32px;
+    text-align: center;
+    cursor: pointer;
+    border: 0px;
+    color: #fff;
+    background-image: none;
+    cursor: pointer;
+}
+#dvpagerecordlast li,  #dvpagerecordfirst li {
+    margin-right:1px;
+}
+#dvpagerecordcontent {
+    margin-left:1px;
+    margin-right:1px;
+}
+#dvpagerecordcontent li {
+    margin-right:1px;
+}

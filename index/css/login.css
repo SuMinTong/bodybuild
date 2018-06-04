@@ -1,0 +1,30 @@
+* {
+    font-family: sans-serif;
+}
+.dvframe {
+    filter:alpha(opacity=80); /*IE滤镜，透明度50%*/
+    -moz-opacity:0.8; /*Firefox私有，透明度50%*/
+    opacity:0.8;/*其他，透明度50%*/
+    position:fixed;
+    top:0px;
+    left:0px;
+    right:0px;
+    bottom:0px;
+    background-color:black;
+}
+.dvlogOn {
+    background-color:white;
+    border-radius: 6px;
+    width:500px;
+    margin:180px auto;
+    padding:20px;
+}
+.imagecode {
+    margin-top:-15px;margin-right:5px;width:153px;height:60px;float:left;cursor:pointer;
+}
+.help-block {
+    color:red;
+}
+.input-xlarge {
+    color:black !important; font-weight:600;font-size:16px;
+}

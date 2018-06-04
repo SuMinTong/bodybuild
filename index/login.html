@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<link href="css/bootstrap.css" rel="stylesheet" />
+		<link href="css/login.css" rel="stylesheet" />
+		<link href="css/jquery-ui-1.10.0.custom.css" rel="stylesheet" type="text/css" />
+		<link rel="shortcut icon" href="images/favicon.png">
+	</head>
+
+	<body waid71fa0d88-5390-4b5b-a2f4-e45fa93d85e2="SA password protect entry checker">
+		<div class="dvframe">
+			<div class="dvlogOn">
+				<form action="index.html" class="form-horizontal" method="post" novalidate="novalidate">
+					<div class="control-group" style="text-align: center">
+						<h3>CMS管理系统</h3>
+					</div>
+					<div class="control-group">
+						<!-- Text input-->
+						<label class="control-label" for="input01">用户名</label>
+						<div class="controls">
+							<input autocomplete="off" class="input-xlarge input-username input-validation-error" data-val="true" data-val-required="请填写用户名" id="UserName" name="UserName" placeholder="用户名" type="text" value="">
+							<p class="help-block help-username"><span class="field-validation-error" data-valmsg-for="UserName" data-valmsg-replace="true"><span for="UserName" generated="true" class="">请填写用户名</span></span>
+							</p>
+						</div>
+					</div>
+					<div class="control-group">
+						<!-- Text input-->
+						<label class="control-label" for="input01">密码</label>
+						<div class="controls">
+							<input autocomplete="off" class="input-xlarge input-password input-validation-error" data-val="true" data-val-required="请填写密码" id="UsserPassword" name="UsserPassword" placeholder="密码" type="password">
+							<p class="help-block help-password"><span class="field-validation-error" data-valmsg-for="UsserPassword" data-valmsg-replace="true"><span for="UsserPassword" generated="true" class="">请填写密码</span></span>
+							</p>
+						</div>
+					</div>
+					<div class="control-group">
+						<!-- Text input-->
+						<label class="control-label" for="input01">验证码</label>
+						<div class="controls">
+							<img src="/Plugs/ImageCode" class="imagecode" title="如果看不清楚，可以点击更换" alt="验证码">
+							<input autocomplete="off" class="input-xlarge input-imagecode input-validation-error" data-val="true" data-val-required="请填写验证码" id="ImageCode" maxlength="4" name="ImageCode" placeholder="验证码" type="text" value="">
+							<p class="help-block help-imagecode"><span class="field-validation-error" data-valmsg-for="ImageCode" data-valmsg-replace="true"><span for="ImageCode" generated="true" class="">请填写验证码</span></span>
+							</p>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label"></label>
+						<div class="controls">
+							<!-- Multiple Checkboxes -->
+							<label class="checkbox">
+                            <input data-val="true" data-val-required="SavePwd 字段是必需的。" id="SavePwd" name="SavePwd" type="checkbox" value="true" class="valid"><input name="SavePwd" type="hidden" value="false">
+                            记住密码
+                        </label>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label"></label>
+						<!-- Button -->
+						<div class="controls">
+							<button class="btn btn-primary btn-logon">登录</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<script src="/Scripts/jquery-1.7.2.min.js"></script>
+		<script src="/Scripts/jquery.validate.min.js"></script>
+		<script src="/Scripts/jquery.validate.unobtrusive.min.js"></script>
+		<script src="/Scripts/JqueryMD5_DinJonYa.js"></script>
+
+		<script src="/Scripts/bootstrap/bootstrap.min.js"></script>
+		<script src="/Scripts/jquery-ui-1.8.11.min.js" type="text/javascript"></script>
+		<script src="/Scripts/jquery.configuration.js"></script>
+		<script>
+			$(function() {
+				//更换验证码
+				$(".imagecode").click(function() {
+					$(".imagecode").attr("src", "/Plugs/ImageCode?" + new Date());
+				});
+
+				var settings = $.data($('form')[0], 'validator').settings;
+				settings.submitHandler = function(form) {
+					var pwd = $(".input-password").val();
+					pwd = $.md5(pwd);
+					pwd = pwd.toUpperCase();
+					$(".input-password").val(pwd);
+					form.submit();
+				};
+
+				var error = '';
+				if(error != "") {
+					$.jsPlugs_Alert({
+						message: error
+					});
+				}
+			});
+		</script>
+
+	</body>

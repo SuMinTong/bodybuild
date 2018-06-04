@@ -1,0 +1,147 @@
+{extend name="base" /}
+{block name="main"}
+
+
+<div class="box_form">
+
+    <div class="box_content">
+        <form class="layui-form" id="admin">
+
+             <div class="layui-form-item">
+                <label class="layui-form-label">关键字</label>
+                <div class="layui-input-inline">
+                 <input name="keywords" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" type="text">
+                </div>
+            </div>
+
+             <div class="layui-form-item">
+                <label class="layui-form-label">文章标题</label>
+                <div class="layui-input-inline">
+                  <input name="title" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" type="text">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">文章简介</label>
+                <div class="layui-input-inline">
+                   <input name="introduction" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" type="text">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">所属门店</label>
+                <div class="layui-input-inline">
+                    <select  multiple name="cid" lay-verify="required">     
+                        {volist name="store_list" id="vo"}   
+                            <option value="{$vo.id}">{$vo.store_name}</option>
+                        {/volist}
+                    </select>
+                   <!-- <input name="cid" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" type="text"> -->
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">详情</label>
+                <div class="layui-input-inline">
+                  <textarea class="layui-textarea layui-hide" name="content" lay-verify="content" id="content"></textarea>
+                </div>
+            </div>
+
+            <div class="layui-upload" id="upload-thumb">
+                <label class="layui-form-label">上传封面图片</label>
+                <button type="button" class="layui-btn and-bg-{$skin_name|default='default'}" id="thumb">上传头像</button>
+                <div class="layui-upload-list">
+                    <label class="layui-form-label"></label>
+                    <img class="layui-upload-img" id="demo1" width="150" height="150">
+                    <p id="demoText"></p>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn and-bg-{$skin_name|default='default'}" lay-submit lay-filter="admin">立即提交</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+</div>
+  
+{/block}
+
+{block name="script"}  
+
+<script>
+layui.use(['form', 'layedit', 'laydate'], function(){
+  var form = layui.form
+  ,layer = layui.layer
+  ,layedit = layui.layedit
+  ,laydate = layui.laydate;
+  
+  //创建一个编辑器
+  var editIndex = layedit.build('content');
+
+    form.verify({
+      content: function(value){
+      layedit.sync(editIndex);
+    }
+  });
+ 
+  $(window).on('load', function() {
+  //监听提交
+  form.on('submit(admin)', function(data){
+    console.log(data);
+
+     $.ajax({
+        url:"{:url('admin/message/saveMess')}",
+        data:$('#admin').serialize(),
+        type:'post',
+        async: false,
+        dataType: 'json',
+        success:function(res) {
+            if(res.code == 1) {
+                layer.alert(res.msg, function(index){
+                    location.href = res.url;
+                })
+             } else {
+                 layer.msg(res.msg);
+                        }
+                    }
+                });
+
+    return false;
+  });
+  });
+});
+</script>
+<script>
+    layui.use('upload', function(){
+        var upload = layui.upload;
+        //执行实例
+        var uploadInst = upload.render({
+            elem: '#thumb' //绑定元素
+            ,url: "{:url('admin/Upload/upload')}" //上传接口
+            ,done: function(res){
+                //上传完毕回调
+                if(res.code == 200) {
+                    $('#demo1').attr('src',res.path);
+                    $('#upload-thumb').append('<input type="hidden" name="thumb" value="'+ res.path +'">');
+                } else {
+                    layer.msg(res.msg);
+                }
+            }
+            ,error: function(){
+                //请求异常回调
+                //演示失败状态，并实现重传
+                var demoText = $('#demoText');
+                demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-mini demo-reload">重试</a>');
+                demoText.find('.demo-reload').on('click', function(){
+                    uploadInst.upload();
+                });
+            }
+        });
+    });
+</script>           
+{/block}

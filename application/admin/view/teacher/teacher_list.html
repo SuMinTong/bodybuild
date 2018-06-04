@@ -1,0 +1,265 @@
+{extend name="base" /}
+{block name="header"}
+<div class="admin_header_{$skin_name|default='default'} clearfix">
+  <div class="title"><i></i>{$title|default=""}</div>
+  <div class="action">
+    <b></b>
+    <div class="layui-btn-group layui-btn-group-only">
+      <a class="layui-btn  layui-btn-disabled layui-btn-sm "><i class="fa fa-reply"></i> 返 回 </a>
+    </div>
+  </div>
+</div>
+{/block}
+{block name="main"}
+
+<form class="layui-form" id="admin">
+<table class="layui-table" lay-even="" lay-skin="row" lay-size="sm">
+  <colgroup>
+    <col width="50">
+    <col width="50">
+    <col width="50">
+    <col width="80">
+    <col width="80">
+    <col width="80">
+    <col width="80">
+    <col width="80">
+    <col width="100">
+    <col width="150">
+    <col width="150">
+    <col width="150">
+    <col width="50">
+    <col width="150">
+  </colgroup>
+  <thead>
+  <tr>
+    <th>选择</th>
+    <th>ID</th>
+    <th>头像</th>
+    <th>手机号</th>
+    <th>真实姓名</th>
+    <th>呢称</th>
+    <th>年龄</th>
+    <th>性别</th>
+    <th>出生日期</th>
+    <th>特长</th>
+    <th>专业资质</th>
+    <th>教练说</th>
+    <th>状态</th>
+    <th>操作</th>
+
+  </tr>
+  </thead>
+  <tbody>
+
+  {volist name="teacher_list" id="vo"}
+  <tr>
+    <td><input type="checkbox" name="user_id[]" class="checkbox" value="{$vo.id}"></td>
+    <td>{$vo.id}</td>
+    {if $vo['url']=='' }
+    <td><a href="__ADMIN__/images/default_headimg.png" class="tooltip"><img src="__ADMIN__/images/default_headimg.png" width="20" height="20"></a></td>
+    {else /}
+    <td><a href="{$vo.url}" class="tooltip"><img src="{$vo.url}" width="20" height="20"></a></td>
+    {/if}
+    <td>{$vo.phone}</td>
+    <td>{$vo.name}</td>
+    <td>{$vo.user_name}</td>
+    <td>{$vo.age}</td>
+    <td>{$vo.sex}</td>
+    <td>{$vo.birth_time}</td>
+    <td>{$vo.speciality}</td>
+    <td>{$vo.professional}</td>
+    <td>{$vo.coach_said}</td>
+    <td><input type="checkbox" name="status[]" lay-skin="switch" lay-text="开启|禁用" lay-filter="switchStatus" value="{$vo.id}" {notempty name="$vo.status"}{eq name="$vo.status" value="1"}checked=""{/eq}{/notempty}></td>
+    <td class="operation-menu">
+      <a href="{:url('admin/teacher/edit',['id'=>$vo.id])}" class="layui-btn and-bg-{$skin_name|default='default'} layui-btn-xs" id="{$vo.id}"><i class="layui-icon"></i></a>
+    </td>
+  </tr>
+  {/volist}
+  </tbody>
+</table>
+  </form>
+{/block}
+
+{block name="script"}
+
+<script type="text/javascript">
+  $(function(){
+    var x = 10;
+    var y = 20;
+    $(".tooltip").mouseover(function(e){
+      var tooltip = "<div id='tooltip'><img src='"+ this.href +"' alt='预览图' height='200'/>"+"<\/div>"; //创建 div 元素
+      $("body").append(tooltip);  //把它追加到文档中
+      $("#tooltip")
+              .css({
+                "top": (e.pageY+y) + "px",
+                "left":  (e.pageX+x)  + "px"
+              }).show("fast");    //设置x坐标和y坐标，并且显示
+    }).mouseout(function(){
+      $("#tooltip").remove();  //移除
+    }).mousemove(function(e){
+      $("#tooltip")
+              .css({
+                "top": (e.pageY+y) + "px",
+                "left":  (e.pageX+x)  + "px"
+              });
+    });
+  });
+
+  $('.delete').click(function(){
+    var id = $(this).attr('id');
+    layer.confirm('确定要删除?', function(index) {
+      $.ajax({
+        url:"{:url('admin/admin_user/delete')}",
+        data:{id:id},
+        dataType: 'json',
+        success:function(res) {
+          layer.msg(res.msg);
+          if(res.code == 200) {
+            setTimeout(function(){
+              location.href = res.url;
+            },1500)
+          }
+        }
+      })
+    })
+  });
+  $('.a_menu').click(function(){
+    var url = $(this).attr('href');
+    var id = $(this).attr('id');
+    var a = true;
+    if(id) {
+      $.ajax({
+        url:url
+        ,async:false
+        ,data:{id:id}
+        ,success:function(res){
+          if(res.code == 0) {
+            layer.msg(res.msg);
+            a = false;
+          }
+        }
+      })
+    } else {
+      $.ajax({
+        url:url
+        ,async:false
+        ,success:function(res){
+          if(res.code == 0) {
+            layer.msg(res.msg);
+            a = false;
+          }
+        }
+      })
+    }
+    return a;
+  })
+</script>
+<script type="text/javascript">
+  layui.use(['layer', 'form'], function() {
+    var layer = layui.layer,
+            $ = layui.jquery,
+            form = layui.form;
+
+    var status=0;
+    form.on('switch(switchStatus)', function(data){
+      loading = layer.load(2, {
+        shade: [0.2,'#000']
+      });
+      if(data.elem.checked){
+        status=1;
+      }else{
+        status=0;
+      }
+      var url="{:url('admin/teacher/update_status')}?id="+data.value+'&status='+status ;
+
+      $.get(url,function(data){
+
+        if(data.code == 200){
+          layer.close(loading);
+          layer.msg(data.msg, {icon: 1, time: 1000}, function(){
+            //  location.reload();
+          });
+        }else{
+          layer.close(loading);
+          layer.msg(data.msg, {icon: 2, anim: 6, time: 1000});
+        }
+      });
+      return false;
+    });
+  });
+
+
+  $('.enable').click(function(){
+    var id = $(this).attr('id');
+    $.ajax({
+      url:"{:url('admin/admin_user/enable')}",
+      data:$('#admin').serialize(),
+      type:'post',
+      async: false,
+      success:function(res) {
+        if(res.code == 1) {
+          layer.alert(res.msg, function(index){
+            location.href = res.url;
+          })
+        } else {
+          layer.msg(res.msg);
+        }
+      }
+    })
+  });
+  $('.prohibit').click(function(){
+    var id = $(this).attr('id');
+    $.ajax({
+      url:"{:url('admin/admin_user/prohibit')}",
+      data:$('#admin').serialize(),
+      type:'post',
+      async: false,
+      success:function(res) {
+        if(res.code == 1) {
+          layer.alert(res.msg, function(index){
+            location.href = res.url;
+          })
+        } else {
+          layer.msg(res.msg);
+        }
+      }
+    })
+  });
+  $('.delete_all').click(function(){
+    var id = $(this).attr('id');
+    $.ajax({
+      url:"{:url('admin/admin_user/delete_all')}",
+      data:$('#admin').serialize(),
+      type:'post',
+      async: false,
+      success:function(res) {
+        if(res.code == 1) {
+          layer.alert(res.msg, function(index){
+            location.href = res.url;
+          })
+        } else {
+          layer.msg(res.msg);
+        }
+      }
+    })
+  });
+  $('.reset_password').click(function(){
+    var id = $(this).attr('id');
+    $.ajax({
+      url:"{:url('admin/admin_user/reset_password')}",
+      data:$('#admin').serialize(),
+      type:'post',
+      async: false,
+      success:function(res) {
+        if(res.code == 1) {
+          layer.alert(res.msg, function(index){
+            location.href = res.url;
+          })
+        } else {
+          layer.msg(res.msg);
+        }
+      }
+    })
+  });
+</script>
+{/block}

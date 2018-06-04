@@ -117,6 +117,7 @@
                     url:"{:url('admin/admin_user/save')}",
                     data:$('#admin').serialize(),
                     type:'post',
+                    dataType: 'json',
                     async: false,
                     success:function(res) {
                         if(res.code == 1) {

@@ -1,0 +1,68 @@
+﻿.menuItem {
+    margin-bottom: 2px;
+    border-radius: 3px;
+    width: 260px;
+}
+
+.menugrid {
+    display: inline;
+    float: left;
+    margin-left: 1%;
+    margin-right: 1%;
+}
+
+.menu-head {
+    background: url(/content/images/grad-overlay-s.png) #4c267d;
+    cursor: pointer;
+    border-radius: 2px 2px 0px 0px;
+    max-height: 40px;
+    border: 1px solid #bbb;
+    border-bottom: none;
+    text-indent: 24px;
+    transition: all linear 150ms;
+}
+
+.menu-head h2 {
+    height: 34px;
+    color: #ddd;
+    font-size: 18px;
+    font-weight: 500;
+    text-shadow: 0 1px 0 #222;
+    line-height: 14px;
+}
+
+.menu-head:hover {
+    text-indent: 14px;
+}
+
+.menuselect {
+    text-indent: 14px;
+}
+
+.menu-content {
+    background: #eee;
+    border: 1px solid #bbb;
+    border-top: none;
+    border-radius: 0 0 3px 3px;
+    margin-top: -10px;
+    display: none;
+}
+
+.menu-content li {
+}
+
+.menu-content li a:link,.menu-content li a:hover,.menu-content li a:visited {
+    background-color: white;
+    display: block;
+    padding: 10px 0px 10px 30px;
+    transition: all linear 150ms;
+    border-bottom: 1px solid rgba(187, 187, 187, 0.6);
+    color:#0088cc;
+}
+
+.menu-content li a:hover {
+    background-color: rgba(187, 187, 187, 0.1);
+    border-bottom: 1px solid rgba(187, 187, 187, 1);
+    text-decoration: none;
+    color: black;
+}

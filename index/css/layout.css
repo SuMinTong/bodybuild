@@ -1,0 +1,120 @@
+﻿html {
+    height: 100%;
+}
+body, ul, li,div {
+    padding:0px;margin:0px;
+    list-style-type:none;
+    font-family: sans-serif !important;
+    font-size:16px;
+}
+body {
+    min-height: 100%;
+    position: relative;
+    background: #d8d6d8 url(/content/images/bkg-pat.png);
+    overflow-y:scroll;
+    /*background-color:yellow;*/
+}
+a {
+    outline: 0;
+}
+.dvheader {
+    height:80px;background: url(/content/images/grad-overlay.png) #4c267d;padding:10px;
+}
+#nav {
+    margin: 0px 1%;
+    min-width: 1214px;
+}
+.nav-item:hover, #user-panel {
+    background: url(/content/images/nav-hover.png);
+    width: 80px;
+    height: 70px;
+    border-radius: 3px;
+}
+#user-panel {
+    width: 255px;
+    height: 80px;
+    float: left;
+    position: relative;
+}
+#top-nav {
+    overflow:hidden;
+    margin-left:80px;
+    margin-top:0px !important;
+}
+#nav li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+#top-nav {
+    position: relative;
+    margin-top:10px;
+}
+#top-nav li {
+    margin-bottom:5px;
+    width: 80px;
+    height: 80px;
+}
+.nav-item {
+    height: 60px;
+    float: left;
+    margin-left: 8px;
+}
+.nav-item p {
+    font-size: 14px;
+    font-weight: 100;
+    text-align: center;
+}
+.nav-item a {
+    display: block;
+    width: 80px;
+    height: 80px;
+}
+.nav-item img {
+    width: 40px;
+    height: 40px;
+    padding: 8px 20px 8px;
+}
+#top-nav a {
+    color: white;
+    font-size: 10px;
+    text-shadow: 0px 1px 0px #222;
+}
+
+
+.wrapper {
+    position: relative;
+    margin: 5px 20px 65px 0px;
+    
+}
+.sidebar {
+    position: absolute;
+    z-index: 10;
+    left: 0px;
+    top: 0px;
+    width: 200px;
+    padding: 0px 20px 0px 0px; 
+    /*background-color:red;992538*/
+}
+.body {
+    position: relative;
+    margin-left: 270px;
+    padding:1px 0px 0px 20px;
+    height:100%;
+}
+
+
+
+footer {
+    z-index:10;
+    position:fixed;
+    background: #4A4849;
+    padding:20px 0px 10px 0px;
+    margin: 0;
+    color: #fff;
+    font-size: 12px;
+    bottom:0px;
+    width:100%;
+}
+.dvcontainer a {
+    color:white;
+}

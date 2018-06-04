@@ -84,6 +84,7 @@
             $.ajax({
                 url:"{:url('admin/nav/delete')}",
                 data:{id:id},
+                dataType: 'json',
                 success:function(res) {
                     layer.msg(res.msg);
                     if(res.code == 1) {
@@ -106,6 +107,7 @@
                 url:"{:url('admin/nav/orders')}",
                 data:$('#admin').serialize(),
                 type:'post',
+                dataType: 'json',
                 async: false,
                 success:function(res) {
                     if(res.code == 1) {

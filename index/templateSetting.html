@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+
+		<link rel="stylesheet" href="css/tabs.css" />
+		<link rel="stylesheet" href="css/layout.css" />
+		<link rel="stylesheet" href="css/bootstrap.css" />
+
+		<link href="css/icheck_skins/all.css" rel="stylesheet" />
+	<link rel="stylesheet" href="css/font-awesome.css" />
+		<style>
+			.item_content ul li {
+    width: 370px;
+    height: 430px;
+    float: left;
+    margin-right: 30px;
+}
+			
+		</style>
+	</head>
+
+	<body>
+
+
+			<ul class="tabs" style="background-color: #faf3f3">
+				<li class="current">
+					<a href="javascript:void(0)" id="#tab1">列表页模版设置</a>
+				</li>
+			</ul>
+			<div class="tabs_content">
+				<div id="tab1" style="display: block; padding-top: 50px;">
+					<div class="item_container">
+						<div class="item_content" style="overflow: auto; padding: 0px;">
+							<form action="/ShopInfo/ShopTemplateSet" method="post" novalidate="novalidate">
+								<ul class="ulitems" style="overflow: auto;">
+									<li>
+										<div style="margin-bottom: 10px;">
+											<div class="iradio_flat-blue checked" style="position: relative;"><input type="radio" checked="'checked'" name="IsOpen" value="1" id="1" style="float: left; line-height: 50px; margin-top: 30px; position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
+										</div>
+										<label for="1" class="">
+                                    <div class="item" style="margin: 0px; padding: 0px;">
+                                        <input type="hidden" value="1" name="templateId">
+                                        <div class="fileupload fileupload-new" data-provides="fileupload">
+                                            <div class="fileupload-new thumbnail" style="width: 350px; height: 330px;">
+                                                <div style="width: 350px; height: 270px;">
+                                                    <img src="images/template2.jpg" style="width: 100%; height: 100%; display: inline;" class="showImage" data-original="images/template2.jpg">
+                                                </div>
+                                                <p style="text-align: center; font-size: 25px; height: 60px; line-height: 60px; font-weight: bold">
+                                                    列表页模版1
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </label>
+									</li>
+									<li>
+										<div style="margin-bottom: 10px;">
+											<div class="iradio_flat-blue" style="position: relative;"><input type="radio" name="IsOpen" value="2" id="2" style="float: left; line-height: 50px; margin-top: 30px; position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
+										</div>
+										<label for="2" class="">
+                                    <div class="item" style="margin: 0px; padding: 0px;">
+                                        <input type="hidden" value="2" name="templateId">
+                                        <div class="fileupload fileupload-new" data-provides="fileupload">
+                                            <div class="fileupload-new thumbnail" style="width: 350px; height: 330px;">
+                                                <div style="width: 350px; height: 270px;">
+                                                    <img src="images/template1.jpg" style="width: 100%; height: 100%; display: inline;" class="showImage" data-original="images/template1.jpg">
+                                                </div>
+                                                <p style="text-align: center; font-size: 25px; height: 60px; line-height: 60px; font-weight: bold">
+                                                       列表页模版2
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </label>
+									</li>
+									<li>
+										<div style="margin-bottom: 10px;">
+											<div class="iradio_flat-blue" style="position: relative;"><input type="radio" name="IsOpen" value="3" id="3" style="float: left; line-height: 50px; margin-top: 30px; position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
+										</div>
+										<label for="3" class="">
+                                    <div class="item" style="margin: 0px; padding: 0px;">
+                                        <input type="hidden" value="3" name="templateId">
+                                        <div class="fileupload fileupload-new" data-provides="fileupload">
+                                            <div class="fileupload-new thumbnail" style="width: 350px; height: 330px;">
+                                                <div style="width: 350px; height: 270px;">
+                                                    <img src="images/template3.jpg" style="width: 100%; height: 100%; display: inline;" class="showImage" data-original="images/template3.jpg">
+                                                </div>
+                                                <p style="text-align: center; font-size: 25px; height: 60px; line-height: 60px; font-weight: bold">
+                                                     列表页模版3
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </label>
+									</li>
+
+								</ul>
+
+								<div style="text-align: center; color: black; text-align: center; text-align: right; text-align: left; text-align: center; text-align: left; text-align: center;">
+								</div>
+								<div class="control-group" id="machine" style="margin-top: 30px; margin-bottom: 20px; width: 800px; display: none; overflow: auto; margin-left: 30px;">
+									<div style="float: left; width: 180px; margin-bottom: 18px; overflow: auto;">
+										<div style="float: left; margin-right: 5px;">
+											<div class="icheckbox_flat-blue checked" style="position: relative;"><input type="checkbox" checked="checked" class="chk1" value="1" name="machineId" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
+										</div>
+										<label>dssd</label>
+									</div>
+								</div>
+								<div style="clear: both; margin-top: 30px;">
+									<input type="button" value="提交" class="btn btn-primary">
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+
+		</div>
+		<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+		<script src="js/jquery.lazyload.js"></script>
+		<script src="js/icheck.min.js"></script>
+		<script>
+			$(function() {
+
+				$("input[type='radio']").iCheck({
+					checkboxClass: 'icheckbox_flat-blue',
+					radioClass: 'iradio_flat-blue',
+				});
+
+				$(".showImage").lazyload({
+					effect: "fadeIn"
+				});
+				$("input[type='checkbox']").iCheck({
+					checkboxClass: 'icheckbox_flat-blue',
+					radioClass: 'iradio_flat-blue',
+				});
+				$('#chk').on('ifChecked', function(event) {
+					$("#machine").fadeOut(200);
+					$(".chk1").iCheck('check');
+				}).on('ifUnchecked', function(event) {
+					$("#machine").fadeIn(700);
+				});
+
+			})
+		</script>
+	</body>
+
+</html>

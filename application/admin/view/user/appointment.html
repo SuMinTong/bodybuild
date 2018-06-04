@@ -1,0 +1,49 @@
+{extend name="base" /}
+{block name="header"}
+<div class="admin_header_{$skin_name|default='default'} clearfix">
+  <div class="title"><i></i>{$title|default=""}</div>
+  <div class="action">
+    <b></b>
+    <div class="layui-btn-group layui-btn-group-only">
+      <a class="layui-btn  layui-btn-disabled layui-btn-sm "><i class="fa fa-reply"></i> 返 回 </a>
+    </div>
+  </div>
+</div>
+{/block}
+{block name="main"}
+<form class="layui-form" id="admin">
+<table class="layui-table" lay-even="" lay-skin="row" lay-size="sm">
+  <colgroup>
+    <col width="50">
+    <col width="50">
+    <col width="50">
+    <col width="250">
+    <col width="150">
+    <col width="150">
+    <col width="150">
+  </colgroup>
+  <thead>
+  <tr>
+    <th>选择</th>
+    <th>ID</th>
+    <th>用户名</th>
+    <th>课程名</th>
+    <th>预约状态</th>
+    <th>可取消时间</th>
+    <th>提交预约时间</th>
+
+  </tr>
+  </thead>
+  <tbody>
+
+  <!--  -->
+  </tbody>
+</table>
+  </form>
+{/block}
+
+{block name="script"}
+
+
+
+{/block}

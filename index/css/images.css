@@ -1,0 +1,55 @@
+﻿@keyframes aniBlink120 {
+    from {
+        margin-left: -60px;
+    }
+
+    to {
+        margin-left: 200px;
+    }
+}
+
+@-webkit-keyframes aniBlink120 {
+    from {
+        margin-left: -60px;
+    }
+
+    to {
+        margin-left: 200px;
+    }
+}
+
+.mod_imgLight {
+    position: relative;
+    width: 200px;
+    height: 152px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+    .mod_imgLight a {
+        display: inline-block;
+    }
+
+        .mod_imgLight a:before {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 152px;
+            margin-top: 0px;
+            margin-left: -200px;
+            overflow: hidden;
+            z-index: 6;
+            background: -moz-linear-gradient(left,rgba(255,255,255,0) 0,rgba(255,255,255,0.4) 50%,rgba(255,255,255,0) 100%);
+            background: -webkit-gradient(linear,left top,right top,color-stop(0%,rgba(255,255,255,0)),color-stop(50%,rgba(255,255,255,0.4)),color-stop(100%,rgba(255,255,255,0)));
+            background: -webkit-linear-gradient(left,rgba(255,255,255,0) 0,rgba(255,255,255,0.4) 50%,rgba(255,255,255,0) 100%);
+            background: -o-linear-gradient(left,rgba(255,255,255,0) 0,rgba(255,255,255,0.4) 50%,rgba(255,255,255,0) 100%);
+            -webkit-transform: skewX(-25deg);
+            transform: skewX(-25deg);
+        }
+
+    .mod_imgLight:hover a:before {
+        -webkit-animation: aniBlink120 .5s ease-out forwards;
+        -moz-animation: aniBlink120 .5s ease-out forwards;
+        -o-animation: aniBlink120 .5s ease-out forwards;
+        animation: aniBlink120 .5s ease-out forwards;
+    }

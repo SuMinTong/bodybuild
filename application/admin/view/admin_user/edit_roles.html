@@ -96,6 +96,7 @@
                 url:"{:url('admin/AdminUser/edit_roles')}",
                 data:$('#admin').serialize(),
                 type:'post',
+                dataType: 'json',
                 async: false,
                 success:function(res) {
                     if(res.code == 1) {

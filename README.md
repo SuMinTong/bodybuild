@@ -1,46 +1,20 @@
-AndPHP.admin 主要针对PHP入门级程序员开发适用，主要特点集成了AUTH多对多权限管理控制，
-比较细分明确了 权限控制=》权限节点 、角色=》角色权限、管理员=》角色 的管理结构。
 
-后台布局主要应用了Layuid的简明小清新，还支持5种风格切换、全屏浏览、锁屏等炫酷功能。
+一、门店
+1.获取门店详情
+	http://127.0.0.1/bodyBuild/public/index.php/index/store/getStores
+2.根据门店id获取门店详情
+	http://127.0.0.1/bodyBuild/public/index.php/index/store/getStoreById
+	参数 id
+二、老师
+	根据老师id获取门店详情
+	http://127.0.0.1/bodyBuild/public/index.php/index/teacher/getTeacherById
+	参数：id=2
+三、课程
 
-相信AndPHP.admin 能让你的后台开发也能舒爽起来，另外补充一点，对于目前大多的共享后台都集成封装了如表单、
-列表等主要构件方法，说是为了方便快速布置后台，当对于入门来说，学习成本也是有的，阅读性也有牺牲，仁者见仁吧，
-就是想告诉大家AndPHP.admin没有这样做，主要好处，多查阅ThinkPHP5.1及Layui2.x文档根据已有文件基本就能活学应用啦！！
-( 打脸了，admin2.0对于FORM\LIST进行了方法集成，但保留了1.0的部分硬编输出，你可以更好的应对，快速的开发！)
+	http://192.168.1.108/bodyBuild/public/index.php/index/Course/
 
-
-//=============
- AndPHP内容管理系统基于ThinkPHP、结合Layui等优秀开源项目开发;
- 将包含系统设置，权限管理，模型管理，数据库管理，栏目管理，会员管理，网站功能，模版管理，微信管理等相关模块。
-
-
-官网在线演示:
- http://andphp.com
- 测试账号：test
- 测试密码：123456
-
-
-admin2.0纯净版发布了
-
-ThinkPHP核心框架更新至5.1.12,
-精简后台功能模块，极简方便开发者
-=）基于后台管理员登录/AUTH权限管理/系统配置及后台FORM、LIST公共方法
-=）基于前台用户登录/AUTH权限管理/会员中心（集成积分管理、签到等）基本用户操作属性
-=) 集成一键安装，localhost/install/index.php
-
-轻度强迫症的我对代码规范有这一定的要求，所以一定程度上做好了备注标示，目前文档整理中，有问题请进QQ群交流学习！
-
-
-
-About，
-
-AndPHP采用ThinkPHP5.15开发，ThinkPHP5.15采用全新的目录结构、架构思想，引入了 很多 的PHP新特性，优化了核心，减少了依赖，实现了真正的惰性加载。 正因为ThinkPHP的 这些新特性， 从而使得ANDPHP的执行速度成倍提高。 UI方面，AndPHP采用了最受欢迎的Layui，Layui用于开发响应式布局、移动设备优先的 WEB 项目。 简洁、直观、强悍的前端开发框架，让ANDPHP的后台界面更加美观，前台布局 更加爽快，开发更迅速、简单。
-
-Tell U,
-
-我们的目标：致力于为个人和中小型企业打造全方位的PHP企业级开发解决方案。 AndPHP,一款基于ThinkPHP5研发的开源免费基础架构，基于AndPHP可以快速的研发各 类应用。 我们的宗旨是给你提供一套持久更新、功能全面、操作便捷供大众使用的内容管理系统 我们希望我们的产品能够让你从繁琐的、复杂的、低效的网站建设和维护中解脱出来！
-
-
-欢迎加入QQ群聊，让我们一起学习一起成长。
-
-141585583
+		1.getTime：获取时间以及星期
+		2.getCourseById：通过星期以及门店id获取课程内容
+			参数on_week
+			store_id
+		3.getCourseByCourseId：通过课程id获取当前课程的详情

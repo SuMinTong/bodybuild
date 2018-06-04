@@ -73,6 +73,7 @@
             $.ajax({
                 url:"{:url('admin/auth_rule/delete')}",
                 data:{id:id},
+                dataType: 'json',
                 success:function(res) {
                     layer.msg(res.msg);
                     if(res.code == 1) {
@@ -95,6 +96,7 @@
                 url:url
                 ,async:false
                 ,data:{id:id}
+                ,dataType: 'json'
                 ,success:function(res){
                     if(res.code == 0) {
                         layer.msg(res.msg);
@@ -106,8 +108,9 @@
             $.ajax({
                 url:url
                 ,async:false
+                dataType: 'json',
                 ,success:function(res){
-                    if(res.code == 0) {
+                    if(res.code == 200) {
                         layer.msg(res.msg);
                         a = false;
                     }
@@ -129,6 +132,7 @@
                 data:$('#admin').serialize(),
                 type:'post',
                 async: false,
+                dataType: 'json',
                 success:function(res) {
                     if(res.code == 1) {
                         layer.alert(res.msg, function(index){

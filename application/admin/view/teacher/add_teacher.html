@@ -1,0 +1,157 @@
+{extend name="base" /}
+
+{block name="main"}
+<div class="box_form">
+
+    <div class="box_content">
+        <form class="layui-form" id="admin">
+            <div class="layui-form-item">
+                <label class="layui-form-label">手机号</label>
+                <div class="layui-input-inline">
+                    <input name="phone" lay-verify="required|phone" placeholder="请输入手机号" autocomplete="off" class="layui-input" type="text">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">真实姓名</label>
+                <div class="layui-input-inline">
+                    <input name="name" lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input" type="text">
+                </div>
+                <div class="layui-form-mid layui-word-aux">请填写6到12位密码</div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">呢称</label>
+                <div class="layui-input-inline">
+                    <input name="user_name" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" type="text">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">年龄</label>
+                <div class="layui-input-inline">
+                    <input name="age" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" type="text">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">性别</label>
+                <div class="layui-input-inline">
+                    <input name="sex" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" type="text">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">出生日期</label>
+                <div class="layui-input-inline">
+                    <input name="birth_time" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" type="text">
+                </div>
+            </div>
+
+             <div class="layui-form-item">
+                <label class="layui-form-label">特长</label>
+                <div class="layui-input-inline">
+                    <input name="speciality" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" type="text">
+                </div>
+            </div>
+
+             <div class="layui-form-item">
+                <label class="layui-form-label">专业资质</label>
+                <div class="layui-input-inline">
+                    <input name="professional" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" type="text">
+                </div>
+            </div>
+
+             <div class="layui-form-item">
+                <label class="layui-form-label">教练说</label>
+                <div class="layui-input-inline">
+                    <input name="coach_said" lay-verify="requireds" placeholder="请输入" autocomplete="off" class="layui-input" type="text">
+                </div>
+            </div>
+
+            <div class="layui-upload" id="upload-thumb">
+                <label class="layui-form-label">头像</label>
+                <button type="button" class="layui-btn and-bg-{$skin_name|default='default'}" id="thumb">上传头像</button>
+                <div class="layui-upload-list">
+                    <label class="layui-form-label"></label>
+                    <img class="layui-upload-img" id="demo1" width="150" height="150">
+                    <p id="demoText"></p>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn and-bg-{$skin_name|default='default'}" lay-submit lay-filter="admin">立即提交</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+</div>
+{/block}
+
+{block name="script"}
+<script>
+    layui.use('upload', function(){
+        var upload = layui.upload;
+        //执行实例
+        var uploadInst = upload.render({
+            elem: '#thumb' //绑定元素
+            ,url: "{:url('admin/Upload/upload')}" //上传接口
+            ,done: function(res){
+                //上传完毕回调
+                if(res.code == 200) {
+                    $('#demo1').attr('src',res.path);
+                    $('#upload-thumb').append('<input type="hidden" name="url" value="'+ res.path +'">');
+                } else {
+                    layer.msg(res.msg);
+                }
+            }
+            ,error: function(){
+                //请求异常回调
+                //演示失败状态，并实现重传
+                var demoText = $('#demoText');
+                demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-mini demo-reload">重试</a>');
+                demoText.find('.demo-reload').on('click', function(){
+                    uploadInst.upload();
+                });
+            }
+        });
+    });
+</script>
+<script>
+    layui.use(['layer', 'form'], function() {
+        var layer = layui.layer,
+                $ = layui.jquery,
+                form = layui.form;
+        form.verify({
+            pass: [
+                /^[\S]{6,12}$/
+                ,'密码必须6到12位，且不能出现空格'
+            ]
+        });
+        $(window).on('load', function() {
+            form.on('submit(admin)', function(data) {
+                $.ajax({
+                    url:"{:url('admin/teacher/addTeacherInfo')}",
+                    data:$('#admin').serialize(),
+                    type:'post',
+                    dataType: 'json',
+                    async: false,
+                    success:function(res) {
+                        if(res.code == 200) {
+                            layer.alert(res.msg, function(index){
+                                location.href = "{:url('admin/teacher/teacherList')}";
+                            })
+                        } else {
+                            layer.msg(res.msg);
+                        }
+                    }
+                });
+                return false;
+            });
+        });
+    });
+</script>
+{/block}

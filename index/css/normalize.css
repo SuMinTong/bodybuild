@@ -1,0 +1,19 @@
+
+audio, canvas, video {
+	display: inline-block;
+}
+audio:not([controls]) {
+	display: none;
+	height: 0;
+}
+[hidden] {
+	display: none;
+}
+
+
+input[type="checkbox"], input[type="radio"] {
+	box-sizing: border-box;
+    
+	padding: 0;
+}
+

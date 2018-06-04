@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+
+		<head>
+
+			<title>智旅通管理系统</title>
+			<meta http-equiv="X-UA-Compatible" content="IE=edge">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+			<link href="css/bootstrap-responsive.css" rel="stylesheet">
+			<link href="css/bootstrap.css" rel="stylesheet">
+			<link href="css/layout.css" rel="stylesheet">
+			<link href="css/menu.css" rel="stylesheet">
+			<link href="css/tabs.css" rel="stylesheet">
+			<link rel="shortcut icon" href="images/favicon.png">
+			<link href="css/zy.all.css" rel="stylesheet">
+			<link href="css/pagerecord.css" rel="stylesheet">
+			<link href="css/table.css" rel="stylesheet">
+			<link href="css/font-awesome.css" rel="stylesheet">
+			<link href="css/jquery-ui-1.10.0.custom.css" rel="stylesheet" type="text/css">
+			<link href="css/images.css" rel="stylesheet">
+			<link href="css/csshake.min.css" rel="stylesheet">
+			<style>
+				.clock {
+					margin-left: 280px;
+					font-family: "Lato", sans-serif;
+				}
+				
+				.clock div {
+					margin-top: 100px;
+					float: left;
+					background: #ffe8e8;
+					border-radius: 6px;
+					width: 96px;
+					height: 80px;
+					line-height: 80px;
+					text-align: center;
+					font-size: 60px;
+					margin: 0px 5px;
+					color: #d96457;
+				}
+			</style>
+
+			<link href="css/icheck_skins/all.css" rel="stylesheet">
+			<style>
+				.item_content ul {
+					list-style: none;
+				}
+				
+				.item_content ul li {
+					width: 370px;
+					height: 430px;
+					float: left;
+					margin-right: 30px;
+				}
+			</style>
+			<script src="js/jquery-1.8.3.min.js"></script>
+
+			<script src="js/bootstrap/bootstrap.min.js"></script>
+			<script src="js/jquery-ui-1.8.11.min.js" type="text/javascript"></script>
+			<script src="js/jquery.configuration.js" type="text/javascript"></script>
+			<script type="text/javascript" src="js/plugs/Jqueryplugs.js"></script>
+
+			<script src="js/time.js"></script>
+			<script>
+				$(function() {
+					/*菜单设置*/
+					/*选项卡设置*/
+					$(".tabs_content").find("[id^='tab']").hide();
+					$(".tabs li:first").attr("class", "current");
+					$(".tabs_content div:first").fadeIn();
+				});
+			</script>
+
+		
+		</head>
+	</head>
+
+	<body oncontextmenu="return false" onselectstart="return false" style="-moz-user-select: none; -webkit-user-select: none;">
+		<!--页面头部        开始-->
+		<div class="dvheader">
+			<ul id="nav">
+				<li id="user-panel" style="color: white;font-size: 22px;margin-top: 30px;">
+				 cms  后台管理系统
+				</li>
+				<li>
+					<ul id="top-nav">
+						<li class="nav-item">
+							<a href="index.html">
+								<img src="images/Setup.png" alt="">
+								<p>首页</p>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="index.html">
+								<img src="images/Awards.png" alt="">
+								<p>商家信息</p>
+							</a>
+						</li>
+						<li class="nav-item">
+						<a href="index.html">
+								<img src="images/Radio bug.png" alt="">
+								<p>新闻娱乐</p>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="index.html">
+								<img src="images/Chinese food.png" alt="">
+								<p>吃喝玩乐</p>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="index.html">
+								<img src="images/Bookkeeping.png" alt="">
+								<p>便民服务</p>
+							</a>
+						</li>
+						<li class="nav-item">
+						<a href="index.html">
+								<img src="images/Dollar coin.png" alt="">
+								<p>优惠信息</p>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="index.html">
+								<img src="images/Joystick.png" alt="">
+								<p>在线游戏</p>
+							</a>
+						</li>
+						<li class="nav-item">
+						<a href="index.html">
+								<img src="images/Theater symbol.png" alt="">
+								<p>热门活动</p>
+							</a>
+						</li>
+						<li class="nav-item">
+						<a href="index.html">
+								<img src="images/Wall.png" alt="">
+								<p>酒店预订</p>
+							</a>
+						</li>
+						<li class="nav-item">
+						<a href="index.html">
+								<img src="images/Message attention.png" alt="">
+								<p>联系我们</p>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="index.html">
+								<img src="images/Transport.png" alt="">
+								<p>本月院线</p>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="index.html">
+								<img src="images/Doghouse.png" alt="">
+								<p>房产</p>
+							</a>
+						</li>
+						<li class="nav-item">
+						<a href="index.html">
+								<img src="images/Multimedia.png" alt="">
+								<p>车市</p>
+							</a>
+						</li>
+						<li class="nav-item">
+						<a href="index.html">
+								<img src="images/Shoe.png" alt="">
+								<p>在线商城</p>
+							</a>
+						</li>
+						<li class="nav-item">
+						<a href="index.html">
+								<img src="images/Ads.png" alt="">
+								<p>在线留言</p>
+							</a>
+						</li>
+						<li class="nav-item">
+						<a href="index.html">
+								<img src="images/List bullets.png" alt="">
+								<p>在线投票</p>
+							</a>
+						</li>
+						<li class="nav-item">
+						<a href="index.html">
+								<img src="images/Typewriter.png" alt="">
+								<p>问卷调查</p>
+							</a>
+						</li>
+					</ul>
+
+				</li>
+			</ul>
+		</div>
+		<!--页面头部        结束-->
+
+		<!---页面内容       开始-->
+		<div class="wrapper">
+
+			<div class="sidebar">
+				<!--动态加载页面对应菜单      开始-->
+				<div class="menuItem menugrid">
+					<div class="menu-head menuselect">
+						<h2>商家信息设置</h2>
+					</div>
+					<ul class="menu-content" style="display: block;">
+						<li>
+							<a href="moduleSetting.html" target="right">模块设置</a>
+						</li>
+						<li>
+							<a href="templateSetting.html" target="right">样式模板设置</a>
+						</li>
+						<li>
+							<a href="article.html" target="right">文章管理</a>
+						</li>
+						<li>
+							<a href="adPicture.html" target="right">广告管理</a>
+						</li>
+						<li>
+							<a href="link.html" target="right">友情链接</a>
+						</li>
+						<li>
+							<a  href="user.html"  target="right" >用户管理</a>
+						</li>
+
+						<li>
+							<a  href="updatePwd.html"  target="right" >个人中心</a>
+						</li>
+							<li>
+							<a  href="login.html"  >退出</a>
+						</li>
+					</ul>
+				</div>
+				
+				<!--动态加载页面对应菜单      结束-->
+			</div>
+
+			<div class="body" >
+				<iframe src="moduleSetting.html" border="none" width="100%" name="right" scrolling="no" height="1200px"></iframe>
+			</div>
+		</div>
+		<!--页面内容        结束-->
+
+		
+	</body>
+
+</html>

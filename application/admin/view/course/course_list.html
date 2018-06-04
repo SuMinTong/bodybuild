@@ -1,0 +1,221 @@
+{extend name="base" /}
+{block name="header"}
+<div class="admin_header_{$skin_name|default='default'} clearfix">
+  <div class="title"><i></i>{$title|default=""}</div>
+  <div class="action">
+    <b></b>
+    <div class="layui-btn-group layui-btn-group-only">
+      <a class="layui-btn  layui-btn-disabled layui-btn-sm "><i class="fa fa-reply"></i> 返 回 </a>
+    </div>
+  </div>
+</div>
+{/block}
+{block name="main"}
+<form class="layui-form" id="admin">
+  <table class="layui-table" lay-even="" lay-skin="row" lay-size="sm">
+    <colgroup>
+      <col width="50">
+      <col width="50">
+      <col width="50">
+      <col width="80">
+      <col width="80">
+      <col width="80">
+      <col width="80">
+      <col width="80">
+      <col width="80">
+      <col width="80">
+      <col width="150">
+      <col width="150">
+      <col width="50">
+      <col width="100">
+      <col width="50">
+      <col width="100">
+      <col width="50">
+      <col width="100">
+    </colgroup>
+    <thead>
+      <tr>
+        <th>选择</th>
+        <th>ID</th>
+        <th>图片</th>
+        <th>老师</th>
+        <th>门店</th>
+        <th>课堂名称</th>
+        <th>课堂人数</th>
+        <th>课堂描述</th>
+        <th>开始时间</th>
+        <th>结束时间</th>
+        <th>注意事项</th>
+        <th>自带物品</th>
+        <th>课时费用</th>
+        <th>课时所在星期</th>
+        <th>课时所在日期</th>
+        <th>可取消时间</th>
+        <th>状态</th>
+        <th>操作</th>
+
+      </tr>
+    </thead>
+    <tbody>
+
+      {volist name="course_list" id="vo"}
+      <tr>
+        <td><input type="checkbox" name="user_id[]" class="checkbox" value="{$vo.id}"></td>
+        <td>{$vo.id}</td>
+        {if $vo['url']=='' }
+        <td><a href="__ADMIN__/images/default_headimg.png" class="tooltip"><img src="__ADMIN__/images/default_headimg.png" width="20" height="20"></a></td>
+        {else /}
+        <td><a href="{$vo.url}" class="tooltip"><img src="{$vo.url}" width="20" height="20"></a></td>
+        {/if}
+        <td>{$vo.teacher_name}</td>
+        <td>{$vo.store_name}</td>
+        <td>{$vo.course_name}</td>
+        <td>{$vo.class_number}</td>
+        <td>{$vo.course_describe}</td>
+        <td>{$vo.start_time}</td>
+        <td>{$vo.over_time}</td>
+        <td>{$vo.notice_matter}</td>
+        <td>{$vo.luggage}</td>
+        <td>{$vo.class_fee}</td>
+        <td>{$vo.on_week}</td>
+        <td>{$vo.on_date}</td>
+        <td>
+          <select  multiple name="appoinTime" data-aid="{$vo.id}" lay-verify="level" lay-filter="appoinTime">     
+            <!-- <option value="{$vo.id}"></option> -->
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </td>
+        <td><input type="checkbox" name="status[]" lay-skin="switch" lay-text="启用|禁用" lay-filter="switchStatus" value="{$vo.id}" {notempty name="$vo.status"}{eq name="$vo.status" value="1"}checked=""{/eq}{/notempty}></td>
+        <td class="operation-menu">
+          <a href="{:url('admin/course/edit',['id'=>$vo.id])}" class="layui-btn and-bg-{$skin_name|default='default'} layui-btn-xs" id="{$vo.id}"><i class="layui-icon"></i></a>
+        </td>
+      </tr>
+      {/volist}
+    </tbody>
+  </table>
+</form>
+{/block}
+
+{block name="script"}
+
+<script type="text/javascript">
+  $(function(){
+    var x = 10;
+    var y = 20;
+    $(".tooltip").mouseover(function(e){
+      var tooltip = "<div id='tooltip'><img src='"+ this.href +"' alt='预览图' height='200'/>"+"<\/div>"; //创建 div 元素
+      $("body").append(tooltip);  //把它追加到文档中
+      $("#tooltip")
+      .css({
+        "top": (e.pageY+y) + "px",
+        "left":  (e.pageX+x)  + "px"
+              }).show("fast");    //设置x坐标和y坐标，并且显示
+    }).mouseout(function(){
+      $("#tooltip").remove();  //移除
+    }).mousemove(function(e){
+      $("#tooltip")
+      .css({
+        "top": (e.pageY+y) + "px",
+        "left":  (e.pageX+x)  + "px"
+      });
+    });
+  });
+
+  $('.delete').click(function(){
+    var id = $(this).attr('id');
+    layer.confirm('确定要删除?', function(index) {
+      $.ajax({
+        url:"{:url('admin/admin_user/delete')}",
+        data:{id:id},
+        dataType: 'json',
+        success:function(res) {
+          layer.msg(res.msg);
+          if(res.code == 1) {
+            setTimeout(function(){
+              location.href = res.url;
+            },1500)
+          }
+        }
+      })
+    })
+  });
+</script>
+<script type="text/javascript">
+  layui.use(['layer', 'form'], function() {
+    var layer = layui.layer,
+    $ = layui.jquery,
+    form = layui.form;
+
+    var status=0;
+    form.on('switch(switchStatus)', function(data){
+      loading = layer.load(2, {
+        shade: [0.2,'#000']
+      });
+      if(data.elem.checked){
+        status=1;
+      }else{
+        status=0;
+      }
+      var url="{:url('admin/course/update_status')}?id="+data.value+'&status='+status ;
+
+      $.get(url,function(data){
+
+        if(data.code == 200){
+          layer.close(loading);
+          layer.msg(data.msg, {icon: 1, time: 1000}, function(){
+            //  location.reload();
+          });
+        }else{
+          layer.close(loading);
+          layer.msg(data.msg, {icon: 2, anim: 6, time: 1000});
+        }
+      });
+      return false;
+    });
+
+    form.on('select(appoinTime)', function(data){
+      
+      var value=data.value
+      var aid=data.elem.dataset.aid
+      layer.confirm('is not?', {icon: 3, title:'提示'},
+function(index) {
+	$.ajax({
+				url:"{:url('admin/course/editAppiontTime')}",
+          data:{
+            appoinTime:value,
+            id:aid
+
+          },
+          dataType: 'json',
+          type:'post',
+          async: false,
+          success:function(res) {
+				
+            if(res.code == 200) {
+              layer.alert(res.msg, function(index){
+
+      
+              })
+            } else {
+              layer.msg(res.msg);
+            }
+          }
+        });
+
+        layer.close(index);
+      },function(index){
+        console.log('取消')
+      });
+
+
+    })
+
+
+  });
+
+</script>
+{/block}

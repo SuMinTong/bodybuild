@@ -1,0 +1,243 @@
+{extend name="base" /} {block name="main"}
+<div class="box_form">
+
+	<div class="box_content">
+		<form class="layui-form" id="admin">
+			<!-- <input type="hidden" name="token" value="{$token}" /> -->
+			<div class="layui-form-item">
+				<label class="layui-form-label">门店名称</label>
+				<div class="layui-input-inline">
+					<input name="store_name" lay-verify="required" placeholder="请输入门店名称" autocomplete="off" class="layui-input" type="text" {notempty name="$info.user_lists.username" }value="{$info.user_lists.username}" {/notempty}>
+				</div>
+			</div>
+
+			<div class="layui-form-item">
+				<label class="layui-form-label">门店地址简称</label>
+				<div class="layui-input-inline">
+					<input name="addre" lay-verify="required" placeholder="请输入门店地址简称" autocomplete="off" class="layui-input" type="text">
+				</div>
+			</div>
+
+			<div class="layui-form-item">
+				<label class="layui-form-label">支持的物品</label>
+				<div class="layui-input-inline">
+					<input name="support" lay-verify="required" placeholder="请输入支持的物品" autocomplete="off" class="layui-input" type="text">
+				</div>
+			</div>
+
+			<div class="layui-form-item">
+				<label class="layui-form-label">不支持物品</label>
+				<div class="layui-input-inline">
+					<input name="no_support" lay-verify="required" placeholder="请再次输入不支持物品" autocomplete="off" class="layui-input" type="text">
+				</div>
+			</div>
+
+			<div class="layui-form-item">
+				<label class="layui-form-label">地址</label>
+				<div class="layui-input-inline">
+					<input name="address" lay-verify="required" placeholder="请再次输入地址" autocomplete="off" class="layui-input" type="text">
+				</div>
+			</div>
+
+			<div class="layui-form-item">
+				<label class="layui-form-label">地铁</label>
+				<div class="layui-input-inline">
+					<input name="metro_name" lay-verify="required" placeholder="请再次输入地铁" autocomplete="off" class="layui-input" type="text">
+				</div>
+			</div>
+
+			<div class="layui-form-item">
+				<label class="layui-form-label">地铁详情</label>
+				<div class="layui-input-inline">
+					<input name="metro_details" lay-verify="required" placeholder="请输入地铁详情" autocomplete="off" class="layui-input" type="text">
+				</div>
+			</div>
+
+			<div class="layui-form-item">
+				<label class="layui-form-label">地铁距离</label>
+				<div class="layui-input-inline">
+					<input name="metro_distance" lay-verify="required" placeholder="请输入地铁距离" autocomplete="off" class="layui-input" type="text">
+				</div>
+			</div>
+
+			<div class="layui-form-item">
+				<label class="layui-form-label">公交站</label>
+				<div class="layui-input-inline">
+					<input name="transit_name" lay-verify="required" placeholder="请输入公交站" autocomplete="off" class="layui-input" type="text">
+				</div>
+			</div>
+
+			<div class="layui-form-item">
+				<label class="layui-form-label">公交详情</label>
+				<div class="layui-input-inline">
+					<input name="transit_details" lay-verify="required" placeholder="请输入公交详情" autocomplete="off" class="layui-input" type="text">
+				</div>
+			</div>
+
+			<div class="layui-form-item">
+				<label class="layui-form-label">公交距离</label>
+				<div class="layui-input-inline">
+					<input name="transit_distance" lay-verify="required" placeholder="请输入公交距离" autocomplete="off" class="layui-input" type="text">
+				</div>
+			</div>
+
+			<div class="layui-form-item">
+				<label class="layui-form-label">自驾详情</label>
+				<div class="layui-input-inline">
+					<input name="driving_details" lay-verify="required" placeholder="请输入自驾详情" autocomplete="off" class="layui-input" type="text">
+				</div>
+			</div>
+
+			<div class="layui-form-item">
+				<label class="layui-form-label">注意</label>
+				<div class="layui-input-inline">
+					<input name="recommend" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" type="text">
+				</div>
+			</div>
+
+			<div class="layui-form-item">
+				<label class="layui-form-label">经度</label>
+				<div class="layui-input-inline">
+					<input name="longitude" lay-verify="required" placeholder="请输入经度" autocomplete="off" class="layui-input" type="text">
+				</div>
+			</div>
+
+			<div class="layui-form-item">
+				<label class="layui-form-label">纬度</label>
+				<div class="layui-input-inline">
+					<input name="latitude" lay-verify="required" placeholder="请输入纬度" autocomplete="off" class="layui-input" type="text">
+				</div>
+			</div>
+
+			<div class="layui-upload" id="upload-thumb">
+				<label class="layui-form-label">头像</label>
+				<button type="button" class="layui-btn and-bg-{$skin_name|default='default'}" id="thumb">上传头像</button>
+				<div class="layui-upload-list">
+					<label class="layui-form-label"></label>
+					<img class="layui-upload-img" id="demo1" width="150" height="150">
+					<p id="demoText"></p>
+				</div>
+			</div>
+
+			<div class="layui-upload">
+
+				<blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
+					<div class="layui-upload-list" id="images"></div>
+					预览图：
+				</blockquote>
+				<button type="button" class="layui-btn" id="uploadBtn">多图片上传</button>
+			</div>
+			<div class="layui-form-item">
+				<div class="layui-input-block">
+					<button class="layui-btn and-bg-{$skin_name|default='default'}" lay-submit lay-filter="admin">立即提交</button>
+					<button type="reset" class="layui-btn layui-btn-primary">重置</button>
+				</div>
+			</div>
+
+		</form>
+
+	</div>
+</div>
+{/block} {block name="script"}
+<script>
+	layui.use('upload', function() {
+		var upload = layui.upload;
+		//执行实例
+		var uploadInst = upload.render({
+			elem: '#thumb' //绑定元素
+				,
+			url: "{:url('admin/Upload/upload')}"
+
+				//上传接口
+				,
+			done: function(res) {
+				console.log(res);
+				//上传完毕回调
+				if(res.code == 200) {
+					$('#demo1').attr('src', res.path);
+					$('#upload-thumb').append('<input type="hidden" name="thumb" value="' + res.path + '">');
+				} else {
+					layer.msg(res.msg);
+				}
+			},
+			error: function() {
+				//请求异常回调
+				//演示失败状态，并实现重传
+				var demoText = $('#demoText');
+				demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-mini demo-reload">重试</a>');
+				demoText.find('.demo-reload').on('click', function() {
+					uploadInst.upload();
+				});
+			}
+		});
+	});
+</script>
+
+<script>
+	layui.use('upload', function() {
+		var $ = layui.jquery,
+			upload = layui.upload,
+			imagePath = '';
+
+		//多图片上传
+		upload.render({
+			elem: '#uploadBtn',
+			url: "{:url('admin/Upload/upload')}",
+			multiple: true,
+			before: function(obj) {
+
+				//预读本地文件示例，不支持ie8
+				obj.preview(function(index, file, result) {
+					$('#images').append('<img src="' + result + '" name="swiper" value="' + result + '" alt="' + file.name + '" class="layui-upload-img">');
+
+				});
+			},
+			done: function(res) {
+				imagePath += res.path + ',';
+				$('#images').append('<input type="hidden" name="swiper" value="' + imagePath + '">');
+				//上传完毕
+			}
+		});
+	});
+</script>
+<script>
+	layui.use(['layer', 'form'], function() {
+		var layer = layui.layer,
+			$ = layui.jquery,
+			form = layui.form;
+		form.verify({
+			pass: [
+				/^[\S]{6,12}$/, '密码必须6到12位，且不能出现空格'
+			]
+		});
+		$(window).on('load', function() {
+			form.on('submit(admin)', function(data) {
+				console.log(data);
+				$.ajax({
+					url: "{:url('admin/site/store_save')}",
+					data: $('#admin').serialize(),
+					type: 'post',
+					async: false,
+					dataType: 'json',
+					success: function(res) {
+						console.log(res);
+						if(res.code == 200) {
+							layer.msg(res.msg, {
+								icon: 1,
+								time: 1000
+							}, function(index) {
+							 location.href = "{:url('admin/site/storelist')}";
+							})
+						} else {
+							layer.msg(res.msg, {
+								icon: 5
+							});
+						}
+					}
+				});
+				return false;
+			});
+		});
+	});
+</script>
+{/block}
